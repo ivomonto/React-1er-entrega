@@ -1,12 +1,13 @@
-import iconCart from "../../assets/carrito.webp"
+// src/components/CardWidget.js
+import React from 'react';
 
-const CardWidget = () => {
+const CardWidget = ({ count }) => {
   return (
     <div>
-      <img src={iconCart} width={55} alt="" />
-      <p>12</p>
+      <img src="" width={55} alt="Carrito" />
+      <p>{count}</p> {/* Mostramos el número de productos en el carrito */}
     </div>
-  )
-}
+  );
+};
 
-export default CardWidget
+export default CardWidget;

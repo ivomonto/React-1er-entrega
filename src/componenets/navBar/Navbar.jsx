@@ -1,12 +1,19 @@
-import CardWidget from "./CardWidget";
-import "./navbar.css";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useCart } from '../context/cartContext.jsx';
+import CardWidget from './Cardwidget.jsx';
+import './navbar.css';
 
 const Navbar = () => {
+  const { cart } = useCart(); 
+  const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0); 
+
   return (
     <nav className="navBar">
       <div>
-        <h2> <Link to="/">Malibu</Link></h2>
+        <h2>
+          <Link to="/">Malibu</Link>
+        </h2>
         <ul className="navList">
           <li className="navItem">
             <Link to="/category/sabanas">Sábanas</Link>
@@ -19,9 +26,11 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <CardWidget />
+      <Link to="/cart">
+        <CardWidget count={cartCount} /> { }
+      </Link>
     </nav>
   );
-}
+};
 
 export default Navbar;
